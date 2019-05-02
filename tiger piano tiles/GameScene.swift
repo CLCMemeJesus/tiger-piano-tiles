@@ -21,12 +21,22 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         
+        backgroundColor = UIColor.black
         
-        
+        TileMaker()
         
         }
     
-    
+    func TileMaker(){
+        var tile = SKSpriteNode(imageNamed: "baboom")
+        tile.position = CGPoint(x: self.size.width, y: self.size.height)
+        tile.physicsBody = SKPhysicsBody(rectangleOf: tile.size)
+        tile.physicsBody?.pinned = true
+        
+        
+        
+        addChild(tile)
+    }
     
     
     
