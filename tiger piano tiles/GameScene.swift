@@ -32,11 +32,11 @@ class GameScene: SKScene {
     
     func TileMaker(){
         
-        tile.position = CGPoint(x: 200, y: 200)
+        tile.position = CGPoint(x: 47, y: self.size.height)
         tile.physicsBody = SKPhysicsBody(rectangleOf: tile.size)
         tile.physicsBody?.pinned = true
         tile.physicsBody?.affectedByGravity = false
-        
+        tile.scale(to: CGSize(width: 93.441, height: 334.946))
         
         addChild(tile)
     }
