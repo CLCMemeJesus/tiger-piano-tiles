@@ -14,11 +14,13 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("view did load")
         if let view = self.view as! SKView? {
+            print("view loaded")
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
+                print("created scene")
                 scene.scaleMode = .aspectFill
                 
                 // Present the scene

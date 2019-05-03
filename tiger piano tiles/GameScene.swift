@@ -17,22 +17,25 @@ import GameplayKit
 class GameScene: SKScene {
     
     
+    var tile = SKSpriteNode(imageNamed: "baboom")
+    
     
     override func didMove(to view: SKView) {
         
-        
+        TileMaker()
+        print("hi")
         backgroundColor = UIColor.black
         
-        TileMaker()
+        
         
         }
     
     func TileMaker(){
-        var tile = SKSpriteNode(imageNamed: "baboom")
-        tile.position = CGPoint(x: self.size.width, y: self.size.height)
+        
+        tile.position = CGPoint(x: 200, y: 200)
         tile.physicsBody = SKPhysicsBody(rectangleOf: tile.size)
         tile.physicsBody?.pinned = true
-        
+        tile.physicsBody?.affectedByGravity = false
         
         
         addChild(tile)
