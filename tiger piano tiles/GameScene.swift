@@ -14,20 +14,24 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     var tile = SKSpriteNode(imageNamed: "baboom")
    // var tileorange = SKSpriteNode()  //wait on this
     
+    
+    
     override func didMove(to view: SKView) {
-        
-            TileMaker()
+        TileMaker()
         
         print("hi")
         backgroundColor = UIColor.black
+        //run(SKAction.repeatForever(SKAction.sequence([SKAction.run(TileMaker),SKAction.wait(forDuration: 1.0)])))
         
+       
         
+        physicsWorld.contactDelegate = self
         
         }
     
@@ -38,17 +42,36 @@ class GameScene: SKScene {
         return random() * (max - min) + min
     }
     
+
+    
     func TileMaker(){
         
-        tile.position = CGPoint(x: self.size.width, y: random(min: 0, max: self.size.height))
+        tile.position = CGPoint(x: random(min: 0, max: self.size.width), y:  self.size.height)
         tile.physicsBody = SKPhysicsBody(rectangleOf: tile.size)
-        tile.physicsBody?.pinned = true
-        tile.physicsBody?.affectedByGravity = false
+        //tile.physicsBody?.pinned = true
+        //tile.physicsBody?.affectedByGravity = false
         tile.scale(to: CGSize(width: 93.441, height: 200))
+        tile.physicsBody?.affectedByGravity = false
+        tile.physicsBody?.isDynamic = true
+        tile.physicsBody?.restitution = 1
+        tile.physicsBody?.angularDamping = 0
+        tile.physicsBody?.angularVelocity = 0
+        tile.physicsBody?.friction = 0
         
-        addChild(tile)
+        self.addChild(tile)
+        let actualDuration = CGFloat.random(in: 2.0...4.0)
+        let actionMove = SKAction.move(to: CGPoint(x: tile.position.x, y: 0), duration: TimeInterval(actualDuration))
+        let actionMoveDone = SKAction.removeFromParent()
+        tile.run(SKAction.sequence([actionMove, actionMoveDone]))
         
     }
+    
+    
+    
+    
+                
+    
+    
     
     
    /* func orangetile(){
@@ -58,11 +81,6 @@ class GameScene: SKScene {
         
     }
     */
-    
-    
-    
-    
-    
     
     
 }
