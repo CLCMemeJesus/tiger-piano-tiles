@@ -17,17 +17,17 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
-    var tile = SKSpriteNode(imageNamed: "baboom")
+    
    // var tileorange = SKSpriteNode()  //wait on this
     
-    
+    var tile: SKSpriteNode!
     
     override func didMove(to view: SKView) {
-        TileMaker()
+        //TileMaker()
         
         print("hi")
         backgroundColor = UIColor.black
-        //run(SKAction.repeatForever(SKAction.sequence([SKAction.run(TileMaker),SKAction.wait(forDuration: 1.0)])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(TileMaker),SKAction.wait(forDuration: 1.0)])))
         
        
         
@@ -42,10 +42,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return random() * (max - min) + min
     }
     
+    
+    
+    
+    
+
+    
 
     
     func TileMaker(){
-        
+        tile = SKSpriteNode(imageNamed: "baboom")
         tile.position = CGPoint(x: random(min: 0, max: self.size.width), y:  self.size.height)
         tile.physicsBody = SKPhysicsBody(rectangleOf: tile.size)
         //tile.physicsBody?.pinned = true
@@ -57,7 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tile.physicsBody?.angularDamping = 0
         tile.physicsBody?.angularVelocity = 0
         tile.physicsBody?.friction = 0
-        
+        tile.physicsBody?.allowsRotation = false
         self.addChild(tile)
         let actualDuration = CGFloat.random(in: 2.0...4.0)
         let actionMove = SKAction.move(to: CGPoint(x: tile.position.x, y: 0), duration: TimeInterval(actualDuration))
