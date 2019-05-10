@@ -18,7 +18,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-   // var tileorange = SKSpriteNode()  //wait on this
+    var scoreLabel: SKLabelNode!
+    var counter = 0
+    var gameStateIsInGame = true
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     
     var tile: SKSpriteNode!
     
@@ -30,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("hi")
         backgroundColor = UIColor.black
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(TileMaker),SKAction.wait(forDuration: 1.0)])))
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(orangeTile),SKAction.wait(forDuration: 2.0)])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(orangeTile),SKAction.wait(forDuration: 1.5)])))
        
         
         physicsWorld.contactDelegate = self
@@ -91,6 +98,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         orange.physicsBody?.friction = 0
         orange.physicsBody?.allowsRotation = false
         self.addChild(orange)
+        let actualDuration = CGFloat.random(in: 2.0...4.0)
+        let actionMove = SKAction.move(to: CGPoint(x: orange.position.x, y: 0), duration: TimeInterval(actualDuration))
+        let actionMoveDone = SKAction.removeFromParent()
+        orange.run(SKAction.sequence([actionMove, actionMoveDone]))
     
     }
     
@@ -117,13 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-   /* func orangetile(){
-        backgroundColor = UIColor.orange
-        
-        
-        
-    }
-    */
+
     
     
 }
