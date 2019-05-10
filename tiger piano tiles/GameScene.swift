@@ -38,7 +38,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundColor = UIColor.black
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(TileMaker),SKAction.wait(forDuration: 1.0)])))
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(orangeTile),SKAction.wait(forDuration: 1.5)])))
-       
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "Score: 0"
+        scoreLabel.position = CGPoint(x: 100, y: 100)
+        addChild(scoreLabel)
         
         physicsWorld.contactDelegate = self
         
@@ -79,7 +82,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.move(to: CGPoint(x: tile.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         tile.run(SKAction.sequence([actionMove, actionMoveDone]))
-        
+        if tile{
+            score += 1
+        }
     }
     
     
@@ -102,7 +107,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.move(to: CGPoint(x: orange.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         orange.run(SKAction.sequence([actionMove, actionMoveDone]))
-    
+        if (orange != nil) {
+           // score -= 2
+        }
     }
     
     
@@ -123,7 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-                
+}
     
     
     
@@ -131,4 +138,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     
-}
+
