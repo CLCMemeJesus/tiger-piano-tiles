@@ -69,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tile.physicsBody = SKPhysicsBody(rectangleOf: tile.size)
         //tile.physicsBody?.pinned = true
         //tile.physicsBody?.affectedByGravity = false
-        tile.scale(to: CGSize(width: 93.441, height: 50))
+        tile.scale(to: CGSize(width: 93.441, height: 200))
         tile.physicsBody?.affectedByGravity = false
         tile.physicsBody?.isDynamic = true
         tile.physicsBody?.restitution = 1
@@ -78,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tile.physicsBody?.friction = 0
         tile.physicsBody?.allowsRotation = false
         self.addChild(tile)
-        let actualDuration = CGFloat.random(in: 2.0...4.0)
+        let actualDuration = CGFloat.random(in: 0.25...1.0)
         let actionMove = SKAction.move(to: CGPoint(x: tile.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         tile.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -101,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         orange.physicsBody?.friction = 0
         orange.physicsBody?.allowsRotation = false
         self.addChild(orange)
-        let actualDuration = CGFloat.random(in: 2.0...4.0)
+        let actualDuration = CGFloat.random(in: 0.25...1.0)
         let actionMove = SKAction.move(to: CGPoint(x: orange.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         orange.run(SKAction.sequence([actionMove, actionMoveDone]))
