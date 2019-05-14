@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("hi")
         backgroundColor = UIColor.black
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(TileMaker),SKAction.wait(forDuration: 1.0)])))
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(orangeTile),SKAction.wait(forDuration: 1.5)])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(orangeTile),SKAction.wait(forDuration: 1.0)])))
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         scoreLabel.text = "Score: 0"
         scoreLabel.position = CGPoint(x: 100, y: 100)
@@ -69,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tile.physicsBody = SKPhysicsBody(rectangleOf: tile.size)
         //tile.physicsBody?.pinned = true
         //tile.physicsBody?.affectedByGravity = false
-        tile.scale(to: CGSize(width: 93.441, height: 200))
+        tile.scale(to: CGSize(width: 93.441, height: 50))
         tile.physicsBody?.affectedByGravity = false
         tile.physicsBody?.isDynamic = true
         tile.physicsBody?.restitution = 1
@@ -82,9 +82,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.move(to: CGPoint(x: tile.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         tile.run(SKAction.sequence([actionMove, actionMoveDone]))
-        if tile{
-            score += 1
-        }
+       
     }
     
     
@@ -107,11 +105,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.move(to: CGPoint(x: orange.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         orange.run(SKAction.sequence([actionMove, actionMoveDone]))
-        if (orange != nil) {
-           // score -= 2
-        }
+       
     }
-    
+
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -122,12 +118,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for node in self.nodes(at: location){
                 print("ooga")
                 let spriteNode = node as! SKSpriteNode
-                if node.name == "babooom"{
-                    print("ok")
+                if node.name == "baboom2" {
+                    print ("nice")
                     node.removeFromParent()
+                    if ("baboom2" != nil){
+                        score -= 2
+                    }
+                }
+               
+                if node.name == "babooom"{
+                  print("ok")
+                    node.removeFromParent()
+                    if ("babooom" != nil){
+                        score += 1
+                        
+                    }
+                    
                 }
             }
         }
+       
         
     }
 }
