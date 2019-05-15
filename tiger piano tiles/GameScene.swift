@@ -63,7 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     func TileMaker(){
-        tile = SKSpriteNode(imageNamed: "baboom")
+        tile = SKSpriteNode(imageNamed: "clc black")
         tile.name = "babooom"
         tile.position = CGPoint(x: random(min: 0, max: self.size.width), y:  self.size.height)
         tile.physicsBody = SKPhysicsBody(rectangleOf: tile.size)
@@ -122,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print ("nice")
                     node.removeFromParent()
                     if ("baboom2" != nil){
-                        score -= 2
+                        score -= 15
                     }
                 }
                
