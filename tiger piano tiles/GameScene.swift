@@ -123,7 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.removeFromParent()
                     if ("baboom2" != nil){
                         score -= 15
-                    }
+                    }   
                 }
                
                 if node.name == "babooom"{
