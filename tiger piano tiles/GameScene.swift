@@ -28,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     var tile: SKSpriteNode!
-    
+    var lucky: SKSpriteNode!
     var orange: SKSpriteNode!
     
     override func didMove(to view: SKView) {
@@ -38,6 +38,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundColor = UIColor.black
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(TileMaker),SKAction.wait(forDuration: 1.0)])))
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(orangeTile),SKAction.wait(forDuration: 1.0)])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(luckytile),SKAction.wait(forDuration: 1.0)])))
+        
+        
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         scoreLabel.text = "Score: 0"
         scoreLabel.position = CGPoint(x: 100, y: 100)
@@ -107,7 +110,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         orange.run(SKAction.sequence([actionMove, actionMoveDone]))
        
     }
-
+    func luckytile(){
+        lucky = SKSpriteNode(imageNamed: "tiger paw")
+        lucky.name = "baboom3"
+        lucky.position = CGPoint(x: random(min: 0, max: self.size.width), y:  self.size.height)
+        lucky.physicsBody = SKPhysicsBody(rectangleOf: lucky.size)
+        lucky.scale(to: CGSize(width: 93.441, height: 200))
+        lucky.physicsBody?.affectedByGravity = false
+        lucky.physicsBody?.isDynamic = true
+        lucky.physicsBody?.restitution = 1
+        lucky.physicsBody?.angularDamping = 0
+        lucky.physicsBody?.angularVelocity = 0
+        lucky.physicsBody?.friction = 0
+        lucky.physicsBody?.allowsRotation = false
+        self.addChild(lucky)
+        let actualDuration = CGFloat.random(in: 0.2...0.25)
+        let actionMove = SKAction.move(to: CGPoint(x: lucky.position.x, y: 0), duration: TimeInterval(actualDuration))
+        let actionMoveDone = SKAction.removeFromParent()
+        lucky.run(SKAction.sequence([actionMove, actionMoveDone]))
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -121,8 +142,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if node.name == "baboom2" {
                     print ("nice")
                     node.removeFromParent()
+                 
                     if ("baboom2" != nil){
-                        score -= 15
+                        score -= 60
                     }   
                 }
                
@@ -133,19 +155,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         score += 1
                         
                     }
-                    
+                   
+                    }
+                if node.name == "baboom3"{
+                    node.removeFromParent()
+                    if ("baboom3" != nil){
+                        score += 100
+                
+                }
+                
                 }
             }
         }
        
         
     }
+
+    
+    
+    
+    
+
+    
+    
+
 }
-    
-    
-    
-    
-
-    
-    
-
