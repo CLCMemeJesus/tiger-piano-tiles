@@ -210,17 +210,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             if score > 4000{
                                 min = 0.0625
                                 max = 2.0
+                            }else{
+                                if score > 4500{
+                                    min = 0.0625
+                                    max = 1.5
+                                }else{
+                                    if score > 5000{
+                                        min = 0.0625
+                                        max = 1.0
+                                    }else{
+                                        if score > 5500{
+                                            min = 0.0625
+                                            max = 0.5
+                                        }else{
+                                            if score > 6000{
+                                                min = 0.0625
+                                                max = 0.125
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
-            }
-            
-            }
-            
         }
-        
+            
+    }
+            
+}
         
     }
 
