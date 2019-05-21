@@ -27,6 +27,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    
+    var min: CGFloat = 3.0
+    var max: CGFloat = 6.0
+    
+    var miny: CGFloat = 2.0
+    var maxy: CGFloat = 3.0
+    
+    
+    
+    
     var tile: SKSpriteNode!
     var lucky: SKSpriteNode!
     var orange: SKSpriteNode!
@@ -81,7 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tile.physicsBody?.friction = 0
         tile.physicsBody?.allowsRotation = false
         self.addChild(tile)
-        let actualDuration = CGFloat.random(in: 0.25...1.0)
+        let actualDuration = CGFloat.random(in: min...max)
         let actionMove = SKAction.move(to: CGPoint(x: tile.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         tile.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -104,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         orange.physicsBody?.friction = 0
         orange.physicsBody?.allowsRotation = false
         self.addChild(orange)
-        let actualDuration = CGFloat.random(in: 0.25...1.0)
+        let actualDuration = CGFloat.random(in: min...max)
         let actionMove = SKAction.move(to: CGPoint(x: orange.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         orange.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -124,7 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lucky.physicsBody?.friction = 0
         lucky.physicsBody?.allowsRotation = false
         self.addChild(lucky)
-        let actualDuration = CGFloat.random(in: 0.2...0.25)
+        let actualDuration = CGFloat.random(in: 5...6)
         let actionMove = SKAction.move(to: CGPoint(x: lucky.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         lucky.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -166,8 +176,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 }
             }
+            
         }
-       
+       //change
+        
+        if score > 500{
+            print("change speed")
+             min = 2.5
+             max = 5.5
+        }
+        
         
     }
 
