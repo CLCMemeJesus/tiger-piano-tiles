@@ -26,7 +26,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             scoreLabel.text = "Score: \(score)"
         }
     }
-    
+    var levelLabel: SKLabelNode!
+    var level = ""
+        
     
     var min: CGFloat = 3.0
     var max: CGFloat = 6.0
@@ -55,6 +57,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.text = "Score: 0"
         scoreLabel.position = CGPoint(x: 100, y: 100)
         addChild(scoreLabel)
+        
+        levelLabel = SKLabelNode(fontNamed: "Chalkduster")
+        levelLabel.text = "Level 1"
+        levelLabel.position = CGPoint(x: 50, y: 50)
+        addChild(levelLabel)
         
         physicsWorld.contactDelegate = self
         
@@ -134,7 +141,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lucky.physicsBody?.friction = 0
         lucky.physicsBody?.allowsRotation = false
         self.addChild(lucky)
-        let actualDuration = CGFloat.random(in: 0.125...1.0)
+        let actualDuration = CGFloat.random(in: 4.125...5.0)
         let actionMove = SKAction.move(to: CGPoint(x: lucky.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         lucky.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -182,58 +189,64 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if score > 6000{
             min = 0.0625
             max = 0.125
-        
+        levelLabel.text = "Level 13"
         }else{
             if score > 5500{
                 min = 0.0625
                 max = 0.5
+                levelLabel.text = "Level 12"
             }
         else{
                 if score > 5000{
             min = 0.0625
             max = 1.0
+                    levelLabel.text = "Level 11"
                 }else{
                     if score > 4500{
                         min = 0.0625
                         max = 1.5
+                        levelLabel.text = "Level 10"
                     }
                 else{
                         if score > 4000{
                         min = 0.0625
                             max = 2.0
+                            levelLabel.text = "Level 9"
                         }else{
                             if score > 3500{
                            min = 0.125
                                 max = 2.5
+                                levelLabel.text = "Level 8"
                         }else{
                                 if score > 3000{
                                     min = 0.25
                                     max = 3.0
+                                    levelLabel.text = "Level 7"
                                 }else{
                                     if score > 2500{
                                         min = 0.5
                                         max = 3.5
-                                    
+                                    levelLabel.text = "Level 6"
                                     }else{
                                         if score > 2000{
                                           min = 1
                                             max = 4.0
-                                        
+                                        levelLabel.text = "Level 5"
                                         }else{
                                             if score > 1500{
                                                min = 1.5
                                                 max = 4.5
-                                            
+                                            levelLabel.text = "Level 4"
                                             }else{
                                                 if score > 1000{
                                                    min = 2.0
                                                     max = 5.0
-                                                
+                                                levelLabel.text = "Level 3"
                                                 }else{
                                                     if score > 500{
                                                         min = 2.5
                                                         max = 5.5
-                                                
+                                                levelLabel.text = "Level 2"
                                                     }
                         
 
