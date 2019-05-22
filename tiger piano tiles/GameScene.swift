@@ -134,7 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lucky.physicsBody?.friction = 0
         lucky.physicsBody?.allowsRotation = false
         self.addChild(lucky)
-        let actualDuration = CGFloat.random(in: 5...6)
+        let actualDuration = CGFloat.random(in: 0.125...1.0)
         let actionMove = SKAction.move(to: CGPoint(x: lucky.position.x, y: 0), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         lucky.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -154,7 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.removeFromParent()
                  
                     if ("baboom2" != nil){
-                        score -= 60
+                        score -= 100
                     }   
                 }
                
