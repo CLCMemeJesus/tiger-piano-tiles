@@ -179,76 +179,76 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
        //change
+        if score > 6000{
+            min = 0.0625
+            max = 0.125
         
-        if score > 500{
-            print("change speed")
-             min = 2.5
-             max = 5.5
-        }else{ if score > 1000{
-            min = 2.0
-            max = 5.0
-        }else{ if score > 1500{
-            min = 1.5
-            max = 4.5
         }else{
-            if score > 2000{
-                min = 1.0
-                max = 4.0
-            }else{
-                if score > 2500{
-                    min = 0.5
-                    max = 3.5
-                }else{
-                    if score > 3000{
-                        min = 0.25
-                        max = 3.0
-                    }else{
-                        if score > 3500{
-                            min = 0.125
-                            max = 2.5
-                        }else{
-                            if score > 4000{
-                                min = 0.0625
-                                max = 2.0
-                            }else{
-                                if score > 4500{
-                                    min = 0.0625
-                                    max = 1.5
-                                }else{
-                                    if score > 5000{
-                                        min = 0.0625
-                                        max = 1.0
-                                    }else{
-                                        if score > 5500{
-                                            min = 0.0625
-                                            max = 0.5
-                                        }else{
-                                            if score > 6000{
-                                                min = 0.0625
-                                                max = 0.125
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            if score > 5500{
+                min = 0.0625
+                max = 0.5
             }
-        }
-            
+        else{
+                if score > 5000{
+            min = 0.0625
+            max = 1.0
+                }else{
+                    if score > 4500{
+                        min = 0.0625
+                        max = 1.5
+                    }
+                else{
+                        if score > 4000{
+                        min = 0.0625
+                            max = 2.0
+                        }else{
+                            if score > 3500{
+                           min = 0.125
+                                max = 2.5
+                        }else{
+                                if score > 3000{
+                                    min = 0.25
+                                    max = 3.0
+                                }else{
+                                    if score > 2500{
+                                        min = 0.5
+                                        max = 3.5
+                                    
+                                    }else{
+                                        if score > 2000{
+                                          min = 1
+                                            max = 4.0
+                                        
+                                        }else{
+                                            if score > 1500{
+                                               min = 1.5
+                                                max = 4.5
+                                            
+                                            }else{
+                                                if score > 1000{
+                                                   min = 2.0
+                                                    max = 5.0
+                                                
+                                                }else{
+                                                    if score > 500{
+                                                        min = 2.5
+                                                        max = 5.5
+                                                
+                                                    }
+                        
+
+
+
     }
-            
 }
-        
-    }
-
-    
-    
-    
-    
-
-    
-    
-
 }
+                                        
+}
+}
+}
+                            
+                        }
+                        
+                    }
+                    
+                }}}}}
