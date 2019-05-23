@@ -55,12 +55,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         scoreLabel.text = "Score: 0"
-        scoreLabel.position = CGPoint(x: 100, y: 100)
+        scoreLabel.position = CGPoint(x: 100, y: 50)
         addChild(scoreLabel)
         
         levelLabel = SKLabelNode(fontNamed: "Chalkduster")
         levelLabel.text = "Level 1"
-        levelLabel.position = CGPoint(x: 50, y: 50)
+        levelLabel.position = CGPoint(x: 200, y: 800)
         addChild(levelLabel)
         
         physicsWorld.contactDelegate = self
